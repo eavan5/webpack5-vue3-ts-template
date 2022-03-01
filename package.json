@@ -1,0 +1,11 @@
+{
+  "name": "webpack5-vue3-ts-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wumao",
+  "license": "ISC"
+}
