@@ -32,7 +32,37 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {}
+          },
+          {
+            loader: 'css-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {}
+          },
+          {
+            loader: 'css-loader',
+            options: {}
+          },
+          {
+            loader: 'less-loader',
+            options: {}
+          }
+        ]
+      },
     ],
   },
   plugins: [
