@@ -1,6 +1,6 @@
 const a = 333
 
-const img1 = require('./2.jpeg')
+const img1 = require('./static/1.jpeg')
 
 const imgDom = document.createElement('img')
 

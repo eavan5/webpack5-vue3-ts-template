@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+
 const path = require('path')
 module.exports = {
   entry: './src/index.ts',
@@ -63,12 +64,43 @@ module.exports = {
           }
         ]
       },
+      //压缩静态资源
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        type: 'asset',
+        use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
+      },
       // 静态资源
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         type: 'asset',
         generator: {
-          filename: "static/img/[name]_[hash:6][ext]" // 指定文件名格式目录
+          filename: "asset/img/[name]_[hash:6][ext]" // 指定文件名格式目录
         },
         parser: {
           dataUrlCondition: {
@@ -80,7 +112,7 @@ module.exports = {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         type: 'asset',
         generator: {
-          filename: "static/audio/[name]_[hash:6][ext]" // 指定文件名格式目录
+          filename: "asset/audio/[name]_[hash:6][ext]" // 指定文件名格式目录
         },
         parser: {
           dataUrlCondition: {
@@ -90,16 +122,16 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        type: 'asset',
+        type: 'asset/resource',
         generator: {
-          filename: "static/font/[name]_[hash:6][ext]" // 指定文件名格式目录
+          filename: "asset/font/[name]_[hash:6][ext]" // 指定文件名格式目录
         },
         parser: {
           dataUrlCondition: {
             maxSize: 10 * 1024 // 10kb  指定大小
           }
         }
-      }
+      },
     ],
   },
   plugins: [
