@@ -17,7 +17,6 @@ module.exports = {
     hot: true, // 启用热模块替换
     open: true, // 打开默认浏览器
   },
-  devtool: 'eval-cheap-module-source-map', // 精简sourcemap
   module: {
     rules: [
       {
@@ -25,6 +24,15 @@ module.exports = {
         exclude: /node_modules/,
         use: 'ts-loader',
       },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
     ],
   },
   plugins: [
