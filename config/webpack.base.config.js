@@ -63,6 +63,43 @@ module.exports = {
           }
         ]
       },
+      // 静态资源
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        type: 'asset',
+        generator: {
+          filename: "static/img/[name]_[hash:6][ext]" // 指定文件名格式目录
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 20 * 1024 // 10kb  指定大小 小于该值则使用inline模式
+          }
+        }
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        type: 'asset',
+        generator: {
+          filename: "static/audio/[name]_[hash:6][ext]" // 指定文件名格式目录
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024 // 10kb  指定大小
+          }
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        type: 'asset',
+        generator: {
+          filename: "static/font/[name]_[hash:6][ext]" // 指定文件名格式目录
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024 // 10kb  指定大小
+          }
+        }
+      }
     ],
   },
   plugins: [
