@@ -17,6 +17,7 @@ module.exports = {
   target: 'web',
   devServer: {
     hot: true, // 启用热模块替换
+    compress: true, // 启用gzip
     open: true, // 打开默认浏览器
   },
   module: {
