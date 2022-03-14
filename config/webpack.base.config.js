@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const path = require('path')
 module.exports = {
@@ -141,5 +142,6 @@ module.exports = {
       template: './src/tpl/index.html',
     }),
     new ProgressBarPlugin(), // 打包进度条
+    new CleanWebpackPlugin(), // 打包前清除文件夹
   ],
 }
