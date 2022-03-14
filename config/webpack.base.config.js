@@ -1,8 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
 const path = require('path')
+
 module.exports = {
   entry: './src/index.ts',
   output: {
@@ -36,36 +35,8 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {}
-          },
-          {
-            loader: 'css-loader',
-            options: {}
-          }
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {}
-          },
-          {
-            loader: 'css-loader',
-            options: {}
-          },
-          {
-            loader: 'less-loader',
-            options: {}
-          }
-        ]
-      },
+      { test: /\.less$/, use: ['style-loader', 'css-loader', "postcss-loader", 'less-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', "postcss-loader", 'sass-loader'] },
       //压缩静态资源
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -143,6 +114,5 @@ module.exports = {
       template: './src/tpl/index.html',
     }),
     new ProgressBarPlugin(), // 打包进度条
-    new CleanWebpackPlugin(), // 打包前清除文件夹
   ],
 }

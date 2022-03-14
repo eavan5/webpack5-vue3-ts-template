@@ -1,5 +1,7 @@
 const a = 333
 
+import './main.css';
+
 const img1 = require('./static/1.jpeg')
 
 const imgDom = document.createElement('img')
