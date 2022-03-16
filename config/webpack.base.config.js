@@ -26,10 +26,10 @@ module.exports = {
       {
         test: /\.tsx?$/i,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: 'babel-loader',
       },
       {
-        test: /\.js$/,
+        test: /\.(j|t)s$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -126,7 +126,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(), // 为每个包含 CSS 的 JS 文件创建一个 CSS 文件，并且支持 CSS 和 SourceMaps 的按需加载。
+    new MiniCssExtractPlugin(
+      {
+        filename: '[name].[hash:8].css'
+      }
+    ), // 为每个包含 CSS 的 JS 文件创建一个 CSS 文件，并且支持 CSS 和 SourceMaps 的按需加载。
     new HtmlWebpackPlugin({
       // 这个插件可以通过一个模板帮助我们生成网站的首页，而且可以帮助我们将输入的模板自动嵌入到指定的文件中
       title: 'webpack5-ts-vue',

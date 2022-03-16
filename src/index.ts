@@ -8,7 +8,7 @@ import './main.css';
 
 const img1 = require('./static/1.jpeg')
 
-const imgDom = document.createElement('img')
+const imgDom = document.createElement('img')11
 
 imgDom.src = img1
 

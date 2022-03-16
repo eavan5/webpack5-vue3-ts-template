@@ -2036,7 +2036,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.1.0, chalk@^4.1.2:
+chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -2786,7 +2786,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^5.0.0, enhanced-resolve@^5.8.3:
+enhanced-resolve@^5.8.3:
   version "5.9.1"
   resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.9.1.tgz"
   integrity sha512-jdyZMwCQ5Oj4c5+BTnkxPgDZO/BJzh/ADDmKebayyzNwjVX1AFCeGkOfxNx0mHi2+8BKC5VxUYiw3TIvoT7vhw==
@@ -4532,7 +4532,7 @@ methods@~1.1.2:
   resolved "https://registry.npmjs.org/methods/-/methods-1.1.2.tgz"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-micromatch@^4.0.0, micromatch@^4.0.2, micromatch@^4.0.4:
+micromatch@^4.0.2, micromatch@^4.0.4:
   version "4.0.4"
   resolved "https://registry.npmjs.org/micromatch/-/micromatch-4.0.4.tgz"
   integrity sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==
@@ -6699,16 +6699,6 @@ trim-repeated@^1.0.0:
   integrity sha512-m6s2OdQe5wgpFMC+pAJ+q9djG82O2jcHPOI6RNg1yy9rCYR+WD6Nbpl32fDpfC56nirdRy+opFa/Vk7HYhqaew==
   dependencies:
     glob "^7.1.2"
-
-ts-loader@^9.2.6:
-  version "9.2.6"
-  resolved "https://registry.npmjs.org/ts-loader/-/ts-loader-9.2.6.tgz"
-  integrity sha512-QMTC4UFzHmu9wU2VHZEmWWE9cUajjfcdcws+Gh7FhiO+Dy0RnR1bNz0YCHqhI0yRowCE9arVnNxYHqELOy9Hjw==
-  dependencies:
-    chalk "^4.1.0"
-    enhanced-resolve "^5.0.0"
-    micromatch "^4.0.0"
-    semver "^7.3.4"
 
 ts-node@^10.5.0:
   version "10.5.0"
