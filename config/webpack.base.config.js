@@ -3,15 +3,23 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+// 路径处理方法
+function resolve (...args) {
+  return path.join(__dirname, '../', ...args);
+}
 
 module.exports = {
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, '../', './dist'), // 打包出口
+    path: resolve('./dist'), // 打包出口
     filename: 'js/[name].js', // 打包完的静态资源文件名
   },
   resolve: {
-    extensions: ['.js', 'ts', 'tsx'], // 指定文件扩展名
+    extensions: ['.js', '.ts', '.tsx'], // 指定文件扩展名.这几个配置的可以不写后缀名
+    // 配置别名
+    alias: {
+      '@': resolve('src'),
+    },
   },
   // webpack升级到5.0后，target默认值值会根据package.json中的browserslist改变，导致devServer的自动更新失效
   // 所以 development 环境下直接配置成 web
@@ -33,9 +41,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
         }
       },
       {
