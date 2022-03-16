@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const path = require('path')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
   entry: './src/index.ts',
@@ -28,6 +30,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -35,8 +38,23 @@ module.exports = {
           }
         }
       },
-      { test: /\.less$/, use: ['style-loader', 'css-loader', "postcss-loader", 'less-loader'] },
-      { test: /\.scss$/, use: ['style-loader', 'css-loader', "postcss-loader", 'sass-loader'] },
+      {
+        test: /\.css$/, use: [
+          MiniCssExtractPlugin.loader, // 添加 loader
+          {
+            loader: 'css-loader',
+            options: {
+              url: true, // 处理url地址 比如 bgi:url里面的url
+              import: true, // 是否需要处理源码中的import关键字
+              modules: false, // 是否要对类名进行模块化处理 类似vue的style scoped
+              sourceMap: false, // 是否生成sourceMap
+              esModule: true, // {default:css内容}
+            }
+          },
+          "postcss-loader"]
+      },
+      { test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", 'less-loader'] },
+      { test: /\.s[c|a]ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", 'sass-loader'] },
       //压缩静态资源
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -108,6 +126,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin(), // 为每个包含 CSS 的 JS 文件创建一个 CSS 文件，并且支持 CSS 和 SourceMaps 的按需加载。
     new HtmlWebpackPlugin({
       // 这个插件可以通过一个模板帮助我们生成网站的首页，而且可以帮助我们将输入的模板自动嵌入到指定的文件中
       title: 'webpack5-ts-vue',
