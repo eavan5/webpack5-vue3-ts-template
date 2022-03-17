@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require('vue-loader'); // 引入VueLoaderPlugin
 
 // 路径处理方法
 function resolve (...args) {
@@ -9,13 +10,13 @@ function resolve (...args) {
 }
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/main.ts',
   output: {
     path: resolve('./dist'), // 打包出口
     filename: 'js/[name].js', // 打包完的静态资源文件名
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'], // 指定文件扩展名.这几个配置的可以不写后缀名
+    extensions: ['.js', '.ts', '.tsx', '.vue'], // 指定文件扩展名.这几个配置的可以不写后缀名
     // 配置别名
     alias: {
       '@': resolve('src'),
@@ -42,6 +43,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         }
+      },
+      {
+        test: /.vue$/,
+        use: ['vue-loader']
       },
       {
         test: /\.css$/, use: [
@@ -142,5 +147,6 @@ module.exports = {
       template: './src/tpl/index.html',
     }),
     new ProgressBarPlugin(), // 打包进度条
+    new VueLoaderPlugin() // 新增 VueLoaderPlugin
   ],
 }
