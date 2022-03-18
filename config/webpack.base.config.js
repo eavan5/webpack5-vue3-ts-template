@@ -46,7 +46,7 @@ module.exports = {
         }
       },
       {
-        test: /.vue$/,
+        test: /\.vue$/,
         use: ['vue-loader']
       },
       {
@@ -65,7 +65,14 @@ module.exports = {
           "postcss-loader"]
       },
       { test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", 'less-loader'] },
-      { test: /\.s[c|a]ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", 'sass-loader'] },
+      {
+        test: /\.s[c|a]ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", {
+          loader: "sass-loader",
+          options: {
+            implementation: require("sass"),
+          }
+        }]
+      },
       //压缩静态资源
       {
         test: /\.(gif|png|jpe?g|svg)$/i,

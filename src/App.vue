@@ -8,7 +8,8 @@
 import { ref } from 'vue'
 </script>
 
-<style lang='sass' scoped>
-// div
-//   color: red
+<style lang='scss' scoped>
+div {
+  color: red;
+}
 </style>
