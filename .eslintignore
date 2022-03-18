@@ -1,0 +1,7 @@
+/logs
+/config
+/node_modules
+/dist
+/package-lock.json
+.DS_Store
+fis-conf.js
