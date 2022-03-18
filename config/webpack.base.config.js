@@ -15,6 +15,9 @@ module.exports = {
     path: resolve('./dist'), // 打包出口
     filename: 'js/[name].js', // 打包完的静态资源文件名
   },
+  cache: {
+    type: "filesystem", // 使用文件缓存
+  },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.vue'], // 指定文件扩展名.这几个配置的可以不写后缀名
     // 配置别名
@@ -155,6 +158,6 @@ module.exports = {
       template: './src/tpl/index.html',
     }),
     new ProgressBarPlugin(), // 打包进度条
-    new VueLoaderPlugin() // 新增 VueLoaderPlugin
+    new VueLoaderPlugin(), // 新增 VueLoaderPlugin
   ],
 }
