@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup lang='ts'>
@@ -9,6 +7,5 @@ import { ref } from 'vue'
 </script>
 
 <style lang='sass' scoped>
-// div
-//   color: red
+
 </style>

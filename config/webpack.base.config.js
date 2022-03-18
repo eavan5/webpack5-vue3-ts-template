@@ -29,6 +29,7 @@ module.exports = {
     hot: true, // 启用热模块替换
     compress: true, // 启用gzip
     open: true, // 打开默认浏览器
+    historyApiFallback: true, // 解决history模式刷新404
   },
   module: {
     rules: [
